@@ -1,0 +1,42 @@
+DirectoryIndex index.php index.html index.html index.xml
+# Options -Indexes
+# Options -MultiViews
+
+# ErrorDocument 400 /errors/400.html
+# ErrorDocument 401 /errors/401.html
+# ErrorDocument 403 /errors/403.html
+# ErrorDocument 404 /errors/404.html
+# ErrorDocument 500 /errors/500.html
+
+<IfModule mod_headers.c>
+  Header set X-UA-Compatible "IE=edge,chrome=1"
+  <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+      Header unset X-UA-Compatible
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+</IfModule>
+
+AddType image/svg+xml  svg svgz
+AddEncoding gzip       svgz
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+  # Options +SymLinksIfOwnerMatch
+    RewriteEngine On
+  # RewriteBase /
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
