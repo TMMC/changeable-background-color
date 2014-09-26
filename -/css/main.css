@@ -68,6 +68,10 @@ h1 > span {
 	padding-top: .3334em;
 }
 
+h1 > span span {
+	line-height: 1.1;
+}
+
 p {
 	font-size: 1.5em;
 	margin-bottom: 0;
