@@ -60,8 +60,11 @@ h1 b:after {
 }
 
 h1 span {
-	font-size: .6667em;
 	display: block;
+}
+
+h1 > span {
+	font-size: .6667em;
 	padding-top: .3334em;
 }
 
