@@ -1,3 +1,2 @@
-TMMC
+Changeable background color
 ====
-My temporary GitHub user page.
